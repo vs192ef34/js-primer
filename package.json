@@ -1,0 +1,19 @@
+{
+  "name": "js-primer",
+  "version": "1.0.0",
+  "description": "Basic JavaScript examples.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vs192ef34/js-primer.git"
+  },
+  "author": "vs192ef34",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vs192ef34/js-primer/issues"
+  },
+  "homepage": "https://github.com/vs192ef34/js-primer#readme"
+}
