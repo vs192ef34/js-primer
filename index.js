@@ -1,21 +1,51 @@
 /* eslint-disable no-console */
 
-const a = 1;
-const b = 13;
-const c = 14;
+const dayNumber = 78;
+let dayName = "не определено";
 
-const check1 = a + b > c;
-const check2 = b + c > a;
-const check3 = c + a > b;
-
-const isTriangle = check1 && check2 && check3;
-
-let action = "можно";
-
-if (!isTriangle) {
-  action = "нельзя";
+switch (dayNumber) {
+  case 1:
+    dayName = "понедельник";
+    break;
+  case 2:
+    dayName = "вторник";
+    break;
+  case 3:
+    dayName = "среда";
+    break;
+  case 4:
+    dayName = "четверг";
+    break;
+  case 5:
+    dayName = "пятница";
+    break;
+  case 6:
+    dayName = "суббота";
+    break;
+  case 7:
+    dayName = "воскресенье";
+    break;
+  default:
+    break;
 }
 
-console.log(
-  `На сторонах с длинами (${a}, ${b}, ${c}) ${action} построить треугольник.`
-);
+let dayType = "не определено";
+
+switch (dayNumber) {
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+    dayType = "рабочий";
+    break;
+  case 6:
+  case 7:
+    dayType = "выходной";
+    break;
+  default:
+    break;
+}
+
+console.log(dayName);
+console.log(dayType);
