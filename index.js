@@ -1,51 +1,35 @@
 /* eslint-disable no-console */
 
-const dayNumber = 78;
-let dayName = "не определено";
-
-switch (dayNumber) {
-  case 1:
-    dayName = "понедельник";
-    break;
-  case 2:
-    dayName = "вторник";
-    break;
-  case 3:
-    dayName = "среда";
-    break;
-  case 4:
-    dayName = "четверг";
-    break;
-  case 5:
-    dayName = "пятница";
-    break;
-  case 6:
-    dayName = "суббота";
-    break;
-  case 7:
-    dayName = "воскресенье";
-    break;
-  default:
-    break;
+for (let i = 1; i <= 10; i += 1) {
+  if (i % 2 !== 0) {
+    const sq = i * i;
+    console.log(`i = ${i}; sq = ${sq}`);
+  }
 }
 
-let dayType = "не определено";
-
-switch (dayNumber) {
-  case 1:
-  case 2:
-  case 3:
-  case 4:
-  case 5:
-    dayType = "рабочий";
-    break;
-  case 6:
-  case 7:
-    dayType = "выходной";
-    break;
-  default:
-    break;
+let i = 90;
+while (i <= 10) {
+  console.log(`while ${i}`);
+  i += 1;
 }
 
-console.log(dayName);
-console.log(dayType);
+i = 90;
+do {
+  console.log(`do-while ${i}`);
+  i += 1;
+} while (i <= 10);
+
+const askUser = () => 23;
+
+console.log("Пожалуйста введите корректный возраст");
+let ages = askUser();
+while (ages < 18) {
+  console.log("Пожалуйста введите корректный возраст");
+  ages = askUser();
+}
+
+ages = 0;
+do {
+  console.log("Пожалуйста введите корректный возраст");
+  ages = askUser();
+} while (ages < 18);
