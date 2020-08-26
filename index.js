@@ -1,61 +1,152 @@
 /* eslint-disable no-console */
 
-const a = [];
+const numbers = [];
 
-for (let i = 1; i <= 10; i += 1) {
-  a.push(i);
+let number = 3;
+
+// for (let counter = 0; counter < 20; ) {
+//   const matched = number % 3 === 0 || number % 5 === 0 || number % 15 === 0;
+
+//   if (matched) {
+//     counter += 1;
+//     numbers.push(number);
+//   }
+
+//   number += 1;
+// }
+
+// let counter = 0;
+// while (counter < 20) {
+//   const matched = number % 3 === 0 || number % 5 === 0 || number % 15 === 0;
+
+//   if (matched) {
+//     counter += 1;
+//     numbers.push(number);
+//   }
+
+//   number += 1;
+// }
+
+// const upperLimit = 320;
+// for (let item = 3; item < upperLimit; item += 1) {
+//   const matched = item % 3 === 0 || item % 5 === 0 || item % 15 === 0;
+//   if (matched) {
+//     numbers.push(item);
+//     if (numbers.length >= 20) {
+//       break;
+//     }
+//   }
+// }
+
+while (numbers.length < 20) {
+  const matched = number % 3 === 0 || number % 5 === 0 || number % 15 === 0;
+  if (matched) {
+    numbers.push(number);
+  }
+
+  number += 1;
 }
 
-for (let i = 0; i < a.length; i += 1) {
-  console.log(`a[${i}] = ${a[i]}`);
+console.log(numbers);
+
+let product = 1;
+for (let index = 2; index < numbers.length; index += 3) {
+  product *= numbers[index];
 }
 
-const b = [];
+console.log(product);
 
-for (let i = 0; i < 10; i += 1) {
-  b[i] = (i + 1) ** 2;
+let max = numbers[0];
+
+for (let index = 1; index < numbers.length; index += 1) {
+  if (max < numbers[index]) {
+    max = numbers[index];
+  }
 }
 
-for (let i = 0; i < b.length; i += 1) {
-  console.log(`b[${i}] = ${b[i]}`);
+console.log(`max = ${max}`);
+
+let min = numbers[0];
+
+for (let index = 1; index < numbers.length; index += 1) {
+  if (min > numbers[index]) {
+    min = numbers[index];
+  }
 }
 
-// c = a + b => c[i] = a[i] + b[i]
+console.log(`min = ${min}`);
 
-const c = [];
+const matrix = [];
 
-for (let i = 0; i < b.length; i += 1) {
-  c.push(a[i] + b[i]);
+for (let i = 1; i <= 9; i += 1) {
+  const row = [];
+  for (let j = 1; j <= 9; j += 1) {
+    row.push(i * j);
+  }
+  matrix.push(row);
 }
 
-for (let i = 0; i < c.length; i += 1) {
-  console.log(`c[${i}] = ${c[i]}`);
+for (let i = 0; i < 9; i += 1) {
+  let row = "";
+  for (let j = 0; j < 9; j += 1) {
+    row += `${matrix[i][j].toString()}\t`;
+  }
+  console.log(row);
 }
+
+// for (let i = 0; i < 9; i += 1) {
+//   console.log(`i = ${i}`);
+//   for (let j = 0; j < 9; j += 1) {
+//     console.log(`matrix [${i}][${j}] = ${matrix[i][j]}`);
+//   }
+// }
 
 let sum = 0;
-let count = 0;
-
-for (let i = 0; i < c.length; i += 1) {
-  if (c[i] % 10 === 0) {
-    sum += c[i];
-    count += 1;
-  }
+for (let i = 0; i < 9; i += 1) {
+  sum += matrix[i][i];
 }
 
-let avarage = sum / count;
-console.log(sum, count, avarage);
+console.log(`sum = ${sum}`);
 
-sum = 0;
-count = 0;
+console.log("============================");
 
-for (let i = 0; i < c.length; i += 1) {
-  if (i % 2 !== 0) {
-    sum += c[i];
-    count += 1;
-
-    console.log(`c[${i}] = ${c[i]}, sum = ${sum}, count = ${count}`);
-  }
+let mProduct = 1;
+let mCount = 0;
+for (let i = 0; i < 9; i += 1) {
+  mProduct *= matrix[i][8 - i];
+  mCount += 1;
 }
 
-avarage = sum / count;
-console.log(sum, count, avarage);
+console.log(
+  `mProduct = ${mProduct}, mCount = ${mCount}, g.avg = ${mProduct / mCount}`
+);
+
+console.log("***********************************************");
+
+const m = [];
+
+for (let i = 0; i < 9; i += 1) {
+  const row = [];
+  for (let j = 0; j < 9; j += 1) {
+    row.push(`${i}:${j}`);
+  }
+  m.push(row);
+}
+
+for (let i = 0; i < 9; i += 1) {
+  let row = "";
+  for (let j = 0; j < 9; j += 1) {
+    row += `${m[i][j].toString()}\t`;
+  }
+  console.log(row);
+}
+
+console.log("============================");
+
+for (let j = 2; j < 9; j += 2) {
+  let column = "";
+  for (let i = 0; i < 9; i += 1) {
+    column += `${m[i][j].toString()}\t`;
+  }
+  console.log(column);
+}
