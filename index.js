@@ -1,152 +1,101 @@
+/* eslint-disable func-names */
 /* eslint-disable no-console */
 
-const numbers = [];
+function max(a, b) {
+  console.log(`max: a = ${a}, b = ${b}`);
+  return a > b ? a : b;
+}
 
-let number = 3;
+function max4(a, b, c, d) {
+  return max(max(a, b), max(c, d));
+}
 
-// for (let counter = 0; counter < 20; ) {
-//   const matched = number % 3 === 0 || number % 5 === 0 || number % 15 === 0;
+const min = function (a, b) {
+  console.log(`min: a = ${a}, b = ${b}`);
+  return a < b ? a : b;
+};
 
-//   if (matched) {
-//     counter += 1;
-//     numbers.push(number);
-//   }
+const sum2 = (a, b) => {
+  let r = 0;
+  if (a > b) {
+    r = a;
+  } else {
+    r = b;
+  }
+  return r;
+};
 
-//   number += 1;
+const sum3 = (a, b, c) => a + b + c;
+
+console.log(`Start`);
+
+const pa = 45;
+const pb = 67;
+
+const r = max(pa, pb);
+
+console.log(r);
+
+if (pa === r) {
+  console.log("pa is max");
+}
+
+if (pb === r) {
+  console.log("pb is max");
+}
+
+// 34, 67, 45, 12
+
+// const r4 = max(34, max(67, max(45, 12)));
+// const r4 = max(max(34, 67), max(45, 12));
+
+console.log(max4(34, 67, 45, 12));
+
+const x = max;
+const y = max;
+const z = max4;
+
+console.log(x, y, z);
+
+console.log(min(37, 12));
+
+const w = min;
+
+console.log(min, w);
+
+const v = sum2;
+
+console.log(sum2, v);
+
+console.log(sum3(10, 20, 30));
+console.log(sum3);
+
+console.log(`End`);
+
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+console.log("Start 2");
+
+// function minPredicate(a, b) {
+//   return a < b;
 // }
 
-// let counter = 0;
-// while (counter < 20) {
-//   const matched = number % 3 === 0 || number % 5 === 0 || number % 15 === 0;
-
-//   if (matched) {
-//     counter += 1;
-//     numbers.push(number);
-//   }
-
-//   number += 1;
+// function maxPredicate(a, b) {
+//   return a > b;
 // }
 
-// const upperLimit = 320;
-// for (let item = 3; item < upperLimit; item += 1) {
-//   const matched = item % 3 === 0 || item % 5 === 0 || item % 15 === 0;
-//   if (matched) {
-//     numbers.push(item);
-//     if (numbers.length >= 20) {
-//       break;
-//     }
-//   }
-// }
-
-while (numbers.length < 20) {
-  const matched = number % 3 === 0 || number % 5 === 0 || number % 15 === 0;
-  if (matched) {
-    numbers.push(number);
-  }
-
-  number += 1;
+function matchPredicate(a, b, predicate) {
+  return predicate(a, b) ? a : b;
 }
 
-console.log(numbers);
+// console.log(matchPredicate(12, 45, maxPredicate));
 
-let product = 1;
-for (let index = 2; index < numbers.length; index += 3) {
-  product *= numbers[index];
-}
+const rp = matchPredicate(12, 45, (a, b) => a <= b);
 
-console.log(product);
+const max_p = (px, py) => matchPredicate(px, py, (a, b) => a > b);
+const min_p = (px, py) => matchPredicate(px, py, (a, b) => a < b);
 
-let max = numbers[0];
+console.log(max_p(12, 34));
+console.log(min_p(12, 34));
 
-for (let index = 1; index < numbers.length; index += 1) {
-  if (max < numbers[index]) {
-    max = numbers[index];
-  }
-}
-
-console.log(`max = ${max}`);
-
-let min = numbers[0];
-
-for (let index = 1; index < numbers.length; index += 1) {
-  if (min > numbers[index]) {
-    min = numbers[index];
-  }
-}
-
-console.log(`min = ${min}`);
-
-const matrix = [];
-
-for (let i = 1; i <= 9; i += 1) {
-  const row = [];
-  for (let j = 1; j <= 9; j += 1) {
-    row.push(i * j);
-  }
-  matrix.push(row);
-}
-
-for (let i = 0; i < 9; i += 1) {
-  let row = "";
-  for (let j = 0; j < 9; j += 1) {
-    row += `${matrix[i][j].toString()}\t`;
-  }
-  console.log(row);
-}
-
-// for (let i = 0; i < 9; i += 1) {
-//   console.log(`i = ${i}`);
-//   for (let j = 0; j < 9; j += 1) {
-//     console.log(`matrix [${i}][${j}] = ${matrix[i][j]}`);
-//   }
-// }
-
-let sum = 0;
-for (let i = 0; i < 9; i += 1) {
-  sum += matrix[i][i];
-}
-
-console.log(`sum = ${sum}`);
-
-console.log("============================");
-
-let mProduct = 1;
-let mCount = 0;
-for (let i = 0; i < 9; i += 1) {
-  mProduct *= matrix[i][8 - i];
-  mCount += 1;
-}
-
-console.log(
-  `mProduct = ${mProduct}, mCount = ${mCount}, g.avg = ${mProduct / mCount}`
-);
-
-console.log("***********************************************");
-
-const m = [];
-
-for (let i = 0; i < 9; i += 1) {
-  const row = [];
-  for (let j = 0; j < 9; j += 1) {
-    row.push(`${i}:${j}`);
-  }
-  m.push(row);
-}
-
-for (let i = 0; i < 9; i += 1) {
-  let row = "";
-  for (let j = 0; j < 9; j += 1) {
-    row += `${m[i][j].toString()}\t`;
-  }
-  console.log(row);
-}
-
-console.log("============================");
-
-for (let j = 2; j < 9; j += 2) {
-  let column = "";
-  for (let i = 0; i < 9; i += 1) {
-    column += `${m[i][j].toString()}\t`;
-  }
-  console.log(column);
-}
+console.log("End 2");
