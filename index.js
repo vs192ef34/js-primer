@@ -1,106 +1,71 @@
 /* eslint-disable no-console */
 
-const getDistance = (x1, y1, x2, y2) =>
-  Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+// hash, object
 
-const showResult = (x1, y1, x2, y2, d) =>
-  console.log(
-    `Расстояние между точкой (${x1}, ${y1}) и точкой (${x2}, ${y2}) равняется ${d}`
-  );
+// object === hash
+// object === class instance
 
-// =================================================================================
-
-const px1 = 10;
-const py1 = 10;
-
-const px2 = 20;
-const py2 = 10;
-
-// ================================================================================
-
-const d = getDistance(px1, py1, px2, py2);
-
-showResult(px1, py1, px2, py2, d);
-
-console.log(
-  `**********************************************************************`
-);
-
-// const valueGeneratorMul = (i, j) => (i + 1) * (j + 1);
-// const valueGeneratorSum = (i, j) => i + j;
-// const valueGeneratorIdx = (i, j) => `${i}:${j}`;
-// const valueGeneratorRnd = (i, j) =>
-//   Math.floor(Math.random() * Math.floor(i * j));
-
-const generators = [
-  (i, j) => (i + 1) * (j + 1),
-  (i, j) => i + j,
-  (i, j) => `${i}:${j}`,
-  (i, j) => Math.floor(Math.random() * Math.floor(i * j)),
-];
-
-const generateMatrix = (rows, cols, valueGenerator) => {
-  const matrix = [];
-
-  for (let i = 0; i < rows; i += 1) {
-    const row = [];
-    for (let j = 0; j < cols; j += 1) {
-      row.push(valueGenerator(i, j));
-    }
-    matrix.push(row);
-  }
-  return matrix;
+const point = {
+  x: 123,
+  y: 451,
+  child: {
+    attrA: "value 1",
+    attrB: "value 2",
+    subObject: {
+      field: "yet another value",
+    },
+  },
 };
 
-const tabFormatter = (value) => `${value.toString()}\t`;
-
-const indicatorFormatter = (value) => {
-  if (value <= 50) {
-    return `-=${value.toString()}=-\t`;
-  }
-
-  return `+*${value.toString()}*+\t`;
+point.child.field = 50;
+point.child.subObject.innerObject = {
+  internalArray: [1, { x: 23, y: 45 }],
 };
 
-const printMatrix = (matrix, formatter) => {
-  for (let i = 0; i < matrix.length; i += 1) {
-    let row = "";
-    const rowLength = matrix[i].length;
+console.log(point.child.subObject.innerObject);
 
-    for (let j = 0; j < rowLength; j += 1) {
-      row += formatter(matrix[i][j]);
-    }
-
-    console.log(row);
-  }
+const point1 = {
+  x: 10,
+  y: 10,
 };
 
-const generatedMatrixes = [];
+const point2 = {
+  x: 10,
+  y: 10,
+};
 
-for (let i = 0; i < generators.length; i += 1) {
-  generatedMatrixes.push(generateMatrix(5, 5, generators[i]));
-}
+const point3 = point1;
+const point4 = point1;
+const point5 = point1;
 
-for (let i = 0; i < generatedMatrixes.length; i += 1) {
-  printMatrix(generatedMatrixes[i], tabFormatter);
-  console.log(
-    `====================================================================`
-  );
-}
+console.log("=== ", point1 === point3);
 
-// const m = generateMatrix(16, 12, valueGeneratorRnd);
-// printMatrix(m, indicatorFormatter);
+console.log("p1 ", point1);
+console.log("p3 ", point3);
 
-// замыкание и пример возврата функции из другой функции
-function outer(multiplier) {
-  return (x) => x * multiplier;
-}
+point3.x = 50;
 
-const inner = outer(18);
+console.log("p1 ", point1);
+console.log("p3 ", point3);
+console.log("p4 ", point4);
+console.log("p5 ", point5);
 
-console.log(inner(3));
-console.log(inner(6));
-console.log(inner(12));
-console.log(inner(24));
+const demo = (n, o) => {
+  n = 345;
+  o.x = 400;
 
-console.log(outer(2)(5));
+  console.log("inside function", n, o);
+};
+
+const p = {
+  x: 10,
+  y: 10,
+};
+
+let m = 11;
+
+console.log(m, p);
+
+demo(m, p);
+
+console.log(m, p);
