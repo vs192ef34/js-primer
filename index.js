@@ -1,71 +1,56 @@
 /* eslint-disable no-console */
 
-// hash, object
+const a = [1, 2, 3, 5, 6, 7, 8, 9, 10];
 
-// object === hash
-// object === class instance
+const b = a.map((i) => i * i);
 
-const point = {
-  x: 123,
-  y: 451,
-  child: {
-    attrA: "value 1",
-    attrB: "value 2",
-    subObject: {
-      field: "yet another value",
-    },
-  },
+console.log(b);
+
+const myMap = (arr, transform) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    result.push(transform(arr[i]));
+  }
+  return result;
 };
 
-point.child.field = 50;
-point.child.subObject.innerObject = {
-  internalArray: [1, { x: 23, y: 45 }],
+const myForEach = (arr, action) => {
+  for (let i = 0; i < arr.length; i += 1) {
+    action(arr[i]);
+  }
 };
 
-console.log(point.child.subObject.innerObject);
+const c = myMap(a, (i) => i * i);
 
-const point1 = {
-  x: 10,
-  y: 10,
-};
+console.log(c);
 
-const point2 = {
-  x: 10,
-  y: 10,
-};
+myForEach(c, (i) => console.log(i));
 
-const point3 = point1;
-const point4 = point1;
-const point5 = point1;
+const r = a.map((item, index, arr) => {
+  const left = index === 0 ? 0 : arr[index - 1];
+  const right = index === arr.length - 1 ? 0 : arr[index + 1];
 
-console.log("=== ", point1 === point3);
+  return (left + item + right) / 3;
+});
 
-console.log("p1 ", point1);
-console.log("p3 ", point3);
+console.log(r);
 
-point3.x = 50;
+const n = a.filter((i) => i % 2 === 0);
 
-console.log("p1 ", point1);
-console.log("p3 ", point3);
-console.log("p4 ", point4);
-console.log("p5 ", point5);
+console.log(n);
 
-const demo = (n, o) => {
-  n = 345;
-  o.x = 400;
+const r1 = a.find((i) => i % 2 === 0);
 
-  console.log("inside function", n, o);
-};
+console.log(r1);
 
-const p = {
-  x: 10,
-  y: 10,
-};
+const r2 = a.findIndex((i) => i % 2 === 0);
 
-let m = 11;
+console.log(r2);
 
-console.log(m, p);
+const r3 = a.some((i) => i % 27 === 0);
 
-demo(m, p);
+console.log(r3);
 
-console.log(m, p);
+const r4 = a.every((i) => i % 27 !== 0);
+
+console.log(r4);
