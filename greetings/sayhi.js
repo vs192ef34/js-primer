@@ -21,3 +21,20 @@ export function setParam1(value) {
 export function setParam2(value) {
   param2 = value;
 }
+
+export const months = ["Dec", "Jan", "Feb"];
+
+export const MODULE_VERSION = "1.0.125";
+
+class DemoUser {
+  constructor(fn, ln) {
+    this.firstName = fn;
+    this.lastName = ln;
+  }
+
+  print() {
+    console.log(`${this.firstName} ${this.lastName}`);
+  }
+}
+
+export const du = new DemoUser("John", "Doe");

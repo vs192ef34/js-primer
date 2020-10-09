@@ -1,6 +1,8 @@
 /* eslint-disable func-names */
 /* eslint-disable no-console */
 
-export default function (name) {
+function greet(name) {
   console.log(`Hello, ${name}`);
 }
+
+export { greet as default };
